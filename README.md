@@ -4,7 +4,7 @@ A responsive static business website for **Fahad Jewellery Box**, a jewellery bo
 
 ## Description
 
-This project is the official website for Fahad Jewellery Box. It presents the company's background, product range, and reasons customers should choose them, along with a gallery of work and a contact section. The site is built as a static, framework-free web application optimized for performance and responsiveness across devices.
+This project is the static website for Fahad Jewellery Box. It presents the company's background, product range, and reasons customers should choose them, along with a gallery of work and a contact section. The site is built as a static, framework-free web application optimized for performance and responsiveness across devices.
 
 ## Technologies Used
 
