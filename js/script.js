@@ -191,3 +191,15 @@
 // ==========================================================
 // 4. Contact Form (validation, submission handling)
 // ==========================================================
+
+
+// ==========================================================
+// 5. Footer (dynamic copyright year)
+// ==========================================================
+
+(function () {
+    const yearEl = document.getElementById('footer-year');
+    if (!yearEl) return;
+
+    yearEl.textContent = new Date().getFullYear();
+})();

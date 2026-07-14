@@ -95,6 +95,19 @@
     .contact-form {
         padding: 32px;
     }
+
+    .footer__container {
+        padding: 64px 24px 0;
+    }
+
+    .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer__brand {
+        grid-column: 1 / -1;
+    }
 }
 
 
@@ -260,6 +273,38 @@
     .contact-form__row {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+
+    .footer__container {
+        padding: 56px 24px 0;
+    }
+
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
+    }
+
+    .footer__brand {
+        grid-column: auto;
+    }
+
+    .footer__logo-group {
+        justify-content: center;
+    }
+
+    .footer__description {
+        max-width: none;
+        margin-inline: auto;
+    }
+
+    .footer__socials {
+        justify-content: center;
+    }
+
+    .footer__bottom {
+        justify-content: center;
+        text-align: center;
     }
 }
 
