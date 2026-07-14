@@ -1257,6 +1257,233 @@ img {
    11. Contact Section
    ========================================================== */
 
+.contact {
+    background-color: var(--hero-bg);
+}
+
+.contact__container {
+    max-width: var(--container-width);
+    margin-inline: auto;
+    padding: 140px 40px 120px;
+}
+
+.contact__header {
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.contact__label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--hero-gold);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: about-fade-in 0.7s ease forwards;
+}
+
+.contact__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+    font-weight: 700;
+    color: var(--hero-heading-color);
+    line-height: 1.25;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: about-fade-in 0.7s ease 0.1s forwards;
+}
+
+.contact__description {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--hero-secondary-color);
+    line-height: 1.8;
+    opacity: 0;
+    animation: about-fade-in 0.7s ease 0.2s forwards;
+}
+
+/* Contact info cards reuse the .feature-card component */
+
+.contact__info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+}
+
+.contact__info-grid .feature-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.contact__info-grid .feature-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.contact__info-grid .feature-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.contact-card__link {
+    color: var(--hero-body-color);
+    transition: color var(--transition-fast);
+}
+
+.contact-card__link:hover,
+.contact-card__link:focus-visible {
+    color: var(--hero-gold);
+}
+
+.contact-card__link:focus-visible {
+    outline: 2px solid var(--hero-gold);
+    outline-offset: 2px;
+}
+
+.contact-card__whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--hero-gold);
+    transition: color var(--transition-fast);
+}
+
+.contact-card__whatsapp svg {
+    width: 16px;
+    height: 16px;
+}
+
+.contact-card__whatsapp:hover,
+.contact-card__whatsapp:focus-visible {
+    color: var(--hero-gold-hover);
+}
+
+.contact-card__whatsapp:focus-visible {
+    outline: 2px solid var(--hero-gold);
+    outline-offset: 2px;
+}
+
+/* Form + trust sidebar */
+
+.contact__body {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+    gap: 48px;
+}
+
+.contact-form {
+    background-color: var(--hero-surface);
+    border: 1px solid var(--hero-border-color);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    animation: about-fade-in 0.7s ease 0.3s forwards;
+}
+
+.contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.contact-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.contact-form__label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--hero-secondary-color);
+}
+
+.contact-form__input {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--hero-body-color);
+    background-color: var(--hero-bg);
+    border: 1px solid var(--hero-border-color);
+    border-radius: 6px;
+    padding: 14px 16px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.contact-form__input::placeholder {
+    color: var(--hero-secondary-color);
+    opacity: 0.6;
+}
+
+.contact-form__input:focus {
+    outline: none;
+    border-color: var(--hero-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.contact-form__textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.contact-form__submit {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.contact__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    animation: about-fade-in 0.7s ease 0.4s forwards;
+}
+
+.contact__trust {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact__whatsapp-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.contact__whatsapp-cta svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact__label,
+    .contact__heading,
+    .contact__description,
+    .contact-form,
+    .contact__sidebar {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 
 /* ==========================================================
    12. Footer
