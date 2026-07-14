@@ -10,25 +10,196 @@
    1. CSS Reset / Base Styles
    ========================================================== */
 
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* ==========================================================
    2. Typography
    ========================================================== */
 
+body {
+    font-family: var(--font-body);
+    color: var(--color-black);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
 
 /* ==========================================================
    3. Variables (Colors, Fonts, Spacing)
    ========================================================== */
 
+:root {
+    --color-white: #FFFFFF;
+    --color-gold: #D4AF37;
+    --color-black: #111111;
+    --color-dark-grey: #2E2E2E;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+
+    --container-width: 1200px;
+    --navbar-height: 90px;
+    --transition-fast: 0.3s ease;
+}
 
 /* ==========================================================
    4. Layout / Utility Classes
    ========================================================== */
 
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin-inline: auto;
+    padding-inline: 40px;
+}
 
 /* ==========================================================
    5. Navigation
    ========================================================== */
+
+#header {
+    background-color: transparent;
+    box-shadow: 0 0 0 rgba(17, 17, 17, 0);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+#header.header--scrolled {
+    background-color: var(--color-white);
+    box-shadow: 0 2px 16px rgba(17, 17, 17, 0.08);
+}
+
+.navbar {
+    max-width: var(--container-width);
+    height: var(--navbar-height);
+    margin-inline: auto;
+    padding-inline: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar__logo {
+    height: 48px;
+    width: auto;
+}
+
+.navbar__title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-black);
+    letter-spacing: 0.3px;
+}
+
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar__links a {
+    position: relative;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-dark-grey);
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.navbar__links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-gold);
+    transition: width 0.3s ease;
+}
+
+.navbar__links a:hover {
+    color: var(--color-gold);
+}
+
+.navbar__links a:hover::after {
+    width: 100%;
+}
+
+.navbar__links a.is-active {
+    color: var(--color-gold);
+}
+
+.navbar__links a.is-active::after {
+    width: 100%;
+}
+
+.navbar__links a:focus-visible,
+.navbar__toggle:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 4px;
+}
+
+.navbar__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.navbar__toggle-bar {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-black);
+    border-radius: 2px;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
 
 
 /* ==========================================================

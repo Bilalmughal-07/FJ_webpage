@@ -14,12 +14,91 @@
    Tablets (below 992px)
    ========================================================== */
 
+@media (max-width: 992px) {
+    :root {
+        --navbar-height: 76px;
+    }
+
+    .navbar {
+        padding-inline: 24px;
+    }
+
+    .navbar__logo {
+        height: 40px;
+    }
+
+    .navbar__title {
+        font-size: 1.2rem;
+    }
+
+    .navbar__links {
+        gap: 24px;
+    }
+}
+
 
 /* ==========================================================
    Small Tablets / Large Phones (below 768px)
    ========================================================== */
 
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: flex;
+    }
+
+    .navbar__links {
+        position: fixed;
+        inset: var(--navbar-height) 0 0 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+        background-color: var(--color-white);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform var(--transition-fast), opacity var(--transition-fast),
+            visibility var(--transition-fast);
+    }
+
+    .navbar__links.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar__links a {
+        font-size: 1.1rem;
+    }
+}
+
 
 /* ==========================================================
    Mobile Phones (below 576px)
    ========================================================== */
+
+@media (max-width: 576px) {
+    :root {
+        --navbar-height: 68px;
+    }
+
+    .navbar {
+        padding-inline: 20px;
+    }
+
+    .navbar__logo {
+        height: 34px;
+    }
+
+    .navbar__title {
+        font-size: 1.05rem;
+    }
+
+    .navbar__links {
+        gap: 28px;
+    }
+
+    .navbar__links a {
+        font-size: 1rem;
+    }
+}
