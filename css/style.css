@@ -414,6 +414,88 @@ img {
    7. About Us Section
    ========================================================== */
 
+.about {
+    background-color: var(--hero-surface);
+}
+
+.about__container {
+    max-width: var(--container-width);
+    margin-inline: auto;
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 72px;
+}
+
+.about__media {
+    width: 100%;
+}
+
+.about__image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 6 / 7;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid var(--hero-border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.about__label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--hero-gold);
+    margin-bottom: 16px;
+}
+
+.about__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+    font-weight: 700;
+    color: var(--hero-heading-color);
+    line-height: 1.25;
+    margin-bottom: 24px;
+}
+
+.about__text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--hero-secondary-color);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+}
+
+.about__stat {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--hero-body-color);
+    padding: 16px 0 16px 28px;
+    border-top: 1px solid var(--hero-border-color);
+    position: relative;
+}
+
+.about__stat::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    color: var(--hero-gold);
+    font-weight: 700;
+}
+
 
 /* ==========================================================
    8. Products Section
