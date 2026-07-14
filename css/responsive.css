@@ -79,6 +79,22 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
+
+    .contact__container {
+        padding: 90px 24px;
+    }
+
+    .contact__info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact__body {
+        gap: 32px;
+    }
+
+    .contact-form {
+        padding: 32px;
+    }
 }
 
 
@@ -219,6 +235,32 @@
         top: 12px;
         right: 12px;
     }
+
+    .contact__container {
+        padding: 64px 24px;
+    }
+
+    .contact__header {
+        margin-bottom: 40px;
+    }
+
+    .contact__info-grid {
+        grid-template-columns: 1fr;
+        margin-bottom: 40px;
+    }
+
+    .contact__body {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        padding: 28px;
+    }
+
+    .contact-form__row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 }
 
 
@@ -272,5 +314,13 @@
 
     .about__stats {
         grid-template-columns: 1fr;
+    }
+
+    .contact__container {
+        padding: 48px 20px;
+    }
+
+    .contact-form {
+        padding: 24px;
     }
 }
