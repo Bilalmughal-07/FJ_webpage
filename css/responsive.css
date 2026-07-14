@@ -11,7 +11,7 @@
 
 @media (max-width: 1200px) {
     .gallery__grid {
-        column-count: 3;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -68,12 +68,8 @@
     }
 
     .gallery__grid {
-        column-count: 2;
-        column-gap: 20px;
-    }
-
-    .gallery__item {
-        margin-bottom: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
@@ -188,7 +184,20 @@
     }
 
     .gallery__grid {
-        column-count: 1;
+        grid-template-columns: 1fr;
+    }
+
+    .lightbox__prev {
+        left: 12px;
+    }
+
+    .lightbox__next {
+        right: 12px;
+    }
+
+    .lightbox__close {
+        top: 12px;
+        right: 12px;
     }
 }
 

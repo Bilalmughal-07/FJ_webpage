@@ -312,7 +312,7 @@
                 </header>
 
                 <div class="gallery__grid">
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Premium Ring Box in fullscreen">
                         <img
                             src="images/products/Product1.jpeg"
                             alt="Premium ring box handcrafted by Fahad Jewellery Box"
@@ -322,7 +322,7 @@
                         <figcaption class="gallery__caption">Premium Ring Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Elegant Necklace Box in fullscreen">
                         <img
                             src="images/products/Product2.jpeg"
                             alt="Elegant necklace box handcrafted by Fahad Jewellery Box"
@@ -332,7 +332,7 @@
                         <figcaption class="gallery__caption">Elegant Necklace Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Luxury Bridal Set Box in fullscreen">
                         <img
                             src="images/products/Product3.jpeg"
                             alt="Luxury bridal set box handcrafted by Fahad Jewellery Box"
@@ -342,7 +342,7 @@
                         <figcaption class="gallery__caption">Luxury Bridal Set Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Custom Jewellery Box in fullscreen">
                         <img
                             src="images/products/Product4.jpeg"
                             alt="Custom jewellery box handcrafted by Fahad Jewellery Box"
@@ -352,7 +352,7 @@
                         <figcaption class="gallery__caption">Custom Jewellery Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Premium Gift Box in fullscreen">
                         <img
                             src="images/products/Product5.jpeg"
                             alt="Premium gift box handcrafted by Fahad Jewellery Box"
@@ -362,7 +362,7 @@
                         <figcaption class="gallery__caption">Premium Gift Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Classic Bangle Box in fullscreen">
                         <img
                             src="images/products/Product6.jpeg"
                             alt="Classic bangle box handcrafted by Fahad Jewellery Box"
@@ -372,7 +372,7 @@
                         <figcaption class="gallery__caption">Classic Bangle Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Handcrafted Earring Box in fullscreen">
                         <img
                             src="images/products/Product7.jpeg"
                             alt="Handcrafted earring box by Fahad Jewellery Box"
@@ -382,7 +382,7 @@
                         <figcaption class="gallery__caption">Handcrafted Earring Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Traditional Gani Box in fullscreen">
                         <img
                             src="images/products/Product8.jpeg"
                             alt="Traditional gani box handcrafted by Fahad Jewellery Box"
@@ -392,7 +392,7 @@
                         <figcaption class="gallery__caption">Traditional Gani Box</figcaption>
                     </figure>
 
-                    <figure class="gallery__item" tabindex="0">
+                    <figure class="gallery__item" tabindex="0" role="button" aria-label="View Elegant Malla Box in fullscreen">
                         <img
                             src="images/products/Product9.jpeg"
                             alt="Elegant malla box handcrafted by Fahad Jewellery Box"
@@ -402,6 +402,17 @@
                         <figcaption class="gallery__caption">Elegant Malla Box</figcaption>
                     </figure>
                 </div>
+            </div>
+
+            <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+                <div class="lightbox__backdrop" data-lightbox-close></div>
+                <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close image viewer">&times;</button>
+                <button type="button" class="lightbox__prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+                <div class="lightbox__content">
+                    <img src="" alt="" class="lightbox__image" id="lightbox-image">
+                    <p class="lightbox__caption" id="lightbox-caption"></p>
+                </div>
+                <button type="button" class="lightbox__next" id="lightbox-next" aria-label="Next image">&#8250;</button>
             </div>
         </section>
 
