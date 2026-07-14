@@ -9,6 +9,12 @@
    Large Desktops (below 1200px)
    ========================================================== */
 
+@media (max-width: 1200px) {
+    .gallery__grid {
+        column-count: 3;
+    }
+}
+
 
 /* ==========================================================
    Tablets (below 992px)
@@ -55,6 +61,19 @@
 
     .products__grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery__container {
+        padding: 90px 24px;
+    }
+
+    .gallery__grid {
+        column-count: 2;
+        column-gap: 20px;
+    }
+
+    .gallery__item {
+        margin-bottom: 20px;
     }
 }
 
@@ -158,6 +177,18 @@
 
     .products__grid {
         grid-template-columns: 1fr;
+    }
+
+    .gallery__container {
+        padding: 64px 24px;
+    }
+
+    .gallery__header {
+        margin-bottom: 40px;
+    }
+
+    .gallery__grid {
+        column-count: 1;
     }
 }
 

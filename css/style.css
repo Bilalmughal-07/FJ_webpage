@@ -790,6 +790,111 @@ img {
    10. Gallery Section
    ========================================================== */
 
+.gallery {
+    background-color: var(--hero-surface);
+}
+
+.gallery__container {
+    max-width: var(--container-width);
+    margin-inline: auto;
+    padding: 120px 40px;
+}
+
+.gallery__header {
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.gallery__label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--hero-gold);
+    margin-bottom: 16px;
+}
+
+.gallery__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+    font-weight: 700;
+    color: var(--hero-heading-color);
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.gallery__description {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--hero-secondary-color);
+    line-height: 1.8;
+}
+
+.gallery__grid {
+    column-count: 4;
+    column-gap: 28px;
+}
+
+.gallery__item {
+    position: relative;
+    display: block;
+    break-inside: avoid;
+    margin: 0 0 28px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--hero-border-color);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gallery__image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery__item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.85), transparent 60%);
+    opacity: 0;
+}
+
+.gallery__item:hover::after,
+.gallery__item:focus-within::after,
+.gallery__item:focus::after {
+    opacity: 1;
+}
+
+.gallery__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 18px 20px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--hero-heading-color);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.gallery__item:hover .gallery__caption,
+.gallery__item:focus-within .gallery__caption,
+.gallery__item:focus .gallery__caption {
+    opacity: 1;
+    visibility: visible;
+}
+
+.gallery__item:focus-visible {
+    outline: 2px solid var(--hero-gold);
+    outline-offset: 4px;
+}
+
 
 /* ==========================================================
    11. Contact Section
