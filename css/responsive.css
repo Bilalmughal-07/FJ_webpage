@@ -63,6 +63,14 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .why-choose-us__container {
+        padding: 80px 24px;
+    }
+
+    .why-choose-us__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .gallery__container {
         padding: 90px 24px;
     }
@@ -172,6 +180,18 @@
     }
 
     .products__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-choose-us__container {
+        padding: 64px 24px;
+    }
+
+    .why-choose-us__header {
+        margin-bottom: 40px;
+    }
+
+    .why-choose-us__grid {
         grid-template-columns: 1fr;
     }
 
