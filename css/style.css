@@ -68,6 +68,7 @@ img {
     --hero-border-color: #2A2A2A;
     --hero-gold: #D4AF37;
     --hero-gold-hover: #C49B2A;
+    --hero-error: #B3444C;
 }
 
 /* ==========================================================
@@ -79,6 +80,33 @@ img {
     max-width: var(--container-width);
     margin-inline: auto;
     padding-inline: 40px;
+}
+
+/* Scroll-reveal utility (class added/toggled via JS IntersectionObserver) */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Counter utility (number wrapped at runtime for the count-up animation) */
+
+.counter {
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 
 /* ==========================================================
@@ -1470,6 +1498,41 @@ img {
 .contact__whatsapp-cta svg {
     width: 18px;
     height: 18px;
+}
+
+/* Form validation feedback (added by JS) */
+
+.contact-form__group.is-invalid .contact-form__input {
+    border-color: var(--hero-error);
+}
+
+.contact-form__error {
+    display: none;
+    margin-top: 6px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--hero-error);
+}
+
+.contact-form__group.is-invalid .contact-form__error {
+    display: block;
+}
+
+.contact-form__success {
+    display: none;
+    margin-top: 20px;
+    padding: 16px 20px;
+    border: 1px solid var(--hero-gold);
+    border-radius: 8px;
+    background-color: rgba(212, 175, 55, 0.08);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--hero-heading-color);
+    text-align: center;
+}
+
+.contact-form__success.is-visible {
+    display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {

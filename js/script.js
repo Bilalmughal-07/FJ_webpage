@@ -39,6 +39,14 @@
         if (event.key === 'Escape') closeMenu();
     });
 
+    document.addEventListener('click', (event) => {
+        const isOpen = navLinksList.classList.contains('is-open');
+        if (!isOpen) return;
+
+        const clickedInsideNav = navLinksList.contains(event.target) || toggle.contains(event.target);
+        if (!clickedInsideNav) closeMenu();
+    });
+
     // Sticky background + shadow on scroll
     let ticking = false;
 
@@ -192,6 +200,95 @@
 // 4. Contact Form (validation, submission handling)
 // ==========================================================
 
+(function () {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phonePattern = /^[+]?[\d\s-]{10,15}$/;
+
+    const requiredFields = ['contact-name', 'contact-phone', 'contact-email', 'contact-message']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+    // Create one error message element per required field
+    requiredFields.forEach((field) => {
+        const group = field.closest('.contact-form__group');
+        if (!group || group.querySelector('.contact-form__error')) return;
+
+        const errorEl = document.createElement('p');
+        errorEl.className = 'contact-form__error';
+        errorEl.id = `${field.id}-error`;
+        group.appendChild(errorEl);
+        field.setAttribute('aria-describedby', errorEl.id);
+    });
+
+    // Success confirmation, created once and toggled visible on valid submit
+    const successEl = document.createElement('p');
+    successEl.className = 'contact-form__success';
+    successEl.setAttribute('role', 'status');
+    successEl.setAttribute('aria-live', 'polite');
+    successEl.textContent = 'Thank you for your inquiry! Our team will get back to you shortly.';
+    form.querySelector('.contact-form__submit').insertAdjacentElement('afterend', successEl);
+
+    const getFieldError = (field) => {
+        const value = field.value.trim();
+
+        if (field.hasAttribute('required') && !value) {
+            return 'This field is required.';
+        }
+        if (field.type === 'email' && value && !emailPattern.test(value)) {
+            return 'Enter a valid email address.';
+        }
+        if (field.type === 'tel' && value && !phonePattern.test(value)) {
+            return 'Enter a valid phone number.';
+        }
+        return '';
+    };
+
+    const validateField = (field) => {
+        const group = field.closest('.contact-form__group');
+        const errorEl = group.querySelector('.contact-form__error');
+        const message = getFieldError(field);
+        const isValid = !message;
+
+        group.classList.toggle('is-invalid', !isValid);
+        field.setAttribute('aria-invalid', String(!isValid));
+        if (errorEl) errorEl.textContent = message;
+
+        return isValid;
+    };
+
+    requiredFields.forEach((field) => {
+        field.addEventListener('blur', () => validateField(field));
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        successEl.classList.remove('is-visible');
+
+        const isFormValid = requiredFields
+            .map((field) => validateField(field))
+            .every(Boolean);
+
+        if (!isFormValid) {
+            const firstInvalid = requiredFields.find((field) =>
+                field.closest('.contact-form__group').classList.contains('is-invalid')
+            );
+            if (firstInvalid) firstInvalid.focus();
+            return;
+        }
+
+        successEl.classList.add('is-visible');
+        form.reset();
+
+        requiredFields.forEach((field) => {
+            field.closest('.contact-form__group').classList.remove('is-invalid');
+            field.removeAttribute('aria-invalid');
+        });
+    });
+})();
+
 
 // ==========================================================
 // 5. Footer (dynamic copyright year)
@@ -202,4 +299,165 @@
     if (!yearEl) return;
 
     yearEl.textContent = new Date().getFullYear();
+})();
+
+
+// ==========================================================
+// 6. Smooth Scrolling
+// ==========================================================
+
+(function () {
+    const header = document.getElementById('header');
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+
+            if (!href || href === '#') {
+                event.preventDefault();
+                return;
+            }
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            event.preventDefault();
+
+            const offset = (header ? header.offsetHeight : 0) + 16;
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        });
+    });
+})();
+
+
+// ==========================================================
+// 7. Scroll Reveal Animations
+// ==========================================================
+
+(function () {
+    const revealTargets = ['hero', 'about', 'products', 'why-choose-us', 'gallery', 'contact', 'footer']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+    if (!revealTargets.length) return;
+
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal--visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+    );
+
+    revealTargets.forEach((section) => {
+        section.classList.add('reveal');
+        revealObserver.observe(section);
+    });
+})();
+
+
+// ==========================================================
+// 8. Product Section Interactions
+// ==========================================================
+
+(function () {
+    const productButtons = document.querySelectorAll('.product-card__button');
+    if (!productButtons.length) return;
+
+    const header = document.getElementById('header');
+    const contactSection = document.getElementById('contact');
+    const messageField = document.getElementById('contact-message');
+
+    productButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const card = button.closest('.product-card');
+            const titleEl = card ? card.querySelector('.product-card__title') : null;
+            const productName = titleEl ? titleEl.textContent.trim() : 'this product';
+
+            if (messageField && !messageField.value.trim()) {
+                messageField.value = `I'm interested in the ${productName}. Please share more details and pricing.`;
+            }
+
+            if (contactSection) {
+                const offset = (header ? header.offsetHeight : 0) + 16;
+                const targetPosition = contactSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+
+            if (messageField) {
+                window.setTimeout(() => messageField.focus(), 500);
+            }
+        });
+    });
+})();
+
+
+// ==========================================================
+// 9. Statistics Counter Animation
+// ==========================================================
+
+(function () {
+    const numberPattern = /(\d+)(\+)/;
+    const candidates = document.querySelectorAll('.about__stat, .feature-card__title');
+
+    candidates.forEach((el) => {
+        const match = el.textContent.match(numberPattern);
+        if (!match) return;
+
+        el.innerHTML = el.innerHTML.replace(
+            numberPattern,
+            `<span class="counter" data-target="${match[1]}">0</span>$2`
+        );
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateCounter = (el) => {
+        const target = Number(el.dataset.target);
+
+        if (prefersReducedMotion) {
+            el.textContent = target;
+            return;
+        }
+
+        const duration = 1500;
+        const startTime = performance.now();
+
+        const step = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target);
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                el.textContent = target;
+            }
+        };
+
+        window.requestAnimationFrame(step);
+    };
+
+    const counterObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+
+    counters.forEach((counter) => counterObserver.observe(counter));
 })();
